@@ -1,10 +1,8 @@
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Sports = () => {
   const [apiData, setApiData] = useState([]);
-
   const getData = async () => {
     const { data } = await axios.post('http://localhost:4000/api/v1/sports', { url: "https://indianexpress.com/section/sports/" })
     const parsedData = JSON.parse(data)
@@ -15,15 +13,10 @@ const Sports = () => {
     getData();
   }, []);
 
-
-  if (!Array.isArray(apiData)) {
-    return <div>Loading...</div>; // Or display an error message
-  }
-
   const mapping = apiData.map((each, index) => {
     return (
       <div key={index}>
-        <h3>{each.title}</h3>
+        <h3 href={each.articleLink}>{each.title}</h3>
         <img src={each.imgUrl} alt={each.title} />
         <a href={each.articleLink} target="_blank" rel="noopener noreferrer">Read more</a>
       </div>
