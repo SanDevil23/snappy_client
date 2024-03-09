@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom'
 const Sports = () => {
   const [apiData, setApiData] = useState([]);
   const getData = async () => {
@@ -17,10 +17,10 @@ const Sports = () => {
   const mapping = apiData.map((each, index) => {
     return (
       <div key={index}>
-        <h3 href={each.articleLink}>{each.title}</h3>
+        <Link href={each.articleLink} to={`/second/${each.title}`} >{each.title}</Link>
         <img src={each.imgUrl} alt={each.title} />
         <a href={each.articleLink} target="_blank" rel="noopener noreferrer">Read more</a>
-      </div>
+      </div >
     );
   });
 
