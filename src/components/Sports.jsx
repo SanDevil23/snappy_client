@@ -6,7 +6,8 @@ const Sports = () => {
   const getData = async () => {
     const { data } = await axios.post('http://localhost:4000/api/v1/sports', { url: "https://indianexpress.com/section/sports/" })
     const parsedData = JSON.parse(data)
-    setApiData(parsedData)
+    const slicedArray = parsedData.slice(0, 5);
+    setApiData(slicedArray)
   };
 
   useEffect(() => {
@@ -27,7 +28,6 @@ const Sports = () => {
     <div>
       <h1>Sports</h1>
       {mapping}
-      <button onClick={() => console.log(apiData)}></button>
     </div>
   );
 };

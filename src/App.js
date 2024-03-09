@@ -1,14 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Landing from './pages/Landing';
-import Sports from './pages/Sports';
+import First from './pages/First';
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Landing></Landing>} />
-        <Route path='/sports' element={<Sports></Sports>} />
-        <Route path='/politics' element={<div>politics</div>} />
-        <Route path='/entertainment' element={<div>entertainment</div>} />
+        <Route path='/first' element={<First />} />
       </Routes>
     </BrowserRouter>
   );

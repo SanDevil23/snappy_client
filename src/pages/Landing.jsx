@@ -5,7 +5,7 @@ const Landing = () => {
   return (
     <div>
       <div>this is Landing page go to latest news</div>
-      <button onClick={() => navigate('/sports')} >get to newz page</button>
+      <button onClick={() => navigate('/first')} >get to newz page</button>
     </div>
   )
 }
