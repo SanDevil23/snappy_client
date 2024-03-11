@@ -52,7 +52,6 @@ const First = () => (
           background: 'rgba(0,0,255,0.02)',
         }}
       >
-        <Entertainment></Entertainment>
       </div>
       <div
         id="part-3"
@@ -63,7 +62,6 @@ const First = () => (
           background: '#FFFBE9',
         }}
       >
-        <Politics></Politics>
       </div>
     </div>
   </>

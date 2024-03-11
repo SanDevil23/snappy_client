@@ -8,7 +8,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Landing></Landing>} />
         <Route path='/first' element={<First />} />
-        <Route path='/second/:title' element={<Second />} />
+        <Route path='/second/:articleLink' element={<Second />} />
       </Routes>
     </BrowserRouter>
   );
