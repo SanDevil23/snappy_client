@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import Sidebar from "./Sidebar";
+
 const Entertainment = () => {
   const [apiData, setApiData] = useState([]);
   const getdata = async () => {
@@ -16,20 +19,29 @@ const Entertainment = () => {
   }, []);
 
   const mapping = apiData.map((each, index) => {
+    const url = encodeURIComponent(each.articleLink)
     return (
-      <div key={index}>
-        <h3 href={each.articleLink}>{each.title}</h3>
-        <img src={each.imageUrl} alt={each.title} />
-        <a href={each.articleLink} target="_blank" rel="noopener noreferrer">
+      <div className="grid grid-cols-1 gap-2 p-8 bg-white" key={index}>
+        <div>
+          <img src={each.imageUrl} alt={each.title} />
+        </div>
+        <div className="text-black">
+        <Link href={each.articleLink} to={`/second/${url}`}>
+                {each.title}
+        </Link>
+        <a className="bg-blue-600 text-white py-1 px-2 rounded m-1 inline-block" href={each.articleLink} target="_blank" rel="noopener noreferrer">
           Read more
         </a>
+        </div>
       </div>
     );
   });
 
   return (
     <div>
-      Entertainment
+      <Sidebar></Sidebar>
+      <div className="text-center text-5xl p-5">Entertainment</div>
+      <hr />
       {mapping}
     </div>
   );

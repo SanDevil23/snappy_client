@@ -12,7 +12,7 @@ const Second = () => {
 
   useEffect(() => {
     getArticleSummary()
-  }, [])
+  },)
 
   return (
     <div>

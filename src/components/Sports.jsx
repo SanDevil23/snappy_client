@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Sidebar from "./Sidebar";
+
 const Sports = () => {
   const [apiData, setApiData] = useState([]);
   const getData = async () => {
@@ -11,7 +13,6 @@ const Sports = () => {
     const slicedArray = parsedData.slice(0, 5);
     setApiData(slicedArray);
   };
-
   useEffect(() => {
     getData();
   }, []);
@@ -19,21 +20,28 @@ const Sports = () => {
   const mapping = apiData.map((each, index) => {
     const url = encodeURIComponent(each.articleLink)
     return (
-      <div key={index}>
-        <Link href={each.articleLink} to={`/second/${url}`}>
-          {each.title}
-        </Link>
-        <img src={each.imgUrl} alt={each.title} />
-        <a href={each.articleLink} target="_blank" rel="noopener noreferrer">
-          Read more
-        </a>
-      </div>
+        <div className="grid grid-cols-1 gap-2 p-8 bg-white" key={index}>
+          <div>
+            <img src={each.imgUrl} alt={each.title} />
+          </div>
+          <div className=" text-black">
+            <Link href={each.articleLink} to={`/second/${url}`}>
+                {each.title}
+            </Link>
+            <a className="bg-blue-600 text-white py-1 px-2 rounded m-1 inline-block" href={each.articleLink} target="_blank" rel="noopener noreferrer">
+              Read more
+            </a>
+          </div>
+
+        </div>
     );
   });
 
   return (
     <div>
-      <h1>Sports</h1>
+      <Sidebar></Sidebar>
+      <div className="text-center text-5xl p-5"> Sports</div>
+      <hr />
       {mapping}
     </div>
   );
